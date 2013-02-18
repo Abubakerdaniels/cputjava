@@ -17,11 +17,27 @@ import org.testng.annotations.Test;
  */
 public class IsPalidDromeImpNGTest {
     
-    public IsPalidDromeImpNGTest() {
+    private IsPalidDrome palid;
+    private  ArrayAssert assertArray;
+  
+            
+    public IsPalidDromeImpNGTest() 
+    {
+        
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public  void setUpClass() throws Exception
+    {
+        palid=new IsPalidDromeImp();
+        assertArray=new ArraysAssertImp();
+        
+       // assertArray.displayListContent(listWanted);
+        
     }
 
     @AfterClass
@@ -44,9 +60,8 @@ public class IsPalidDromeImpNGTest {
     {
         System.out.println("isPalindrome");
         int digit = 717;
-        IsPalidDromeImp instance = new IsPalidDromeImp();
         boolean expResult = true;
-        boolean result = instance.isPalindrome(digit);
+        boolean result = palid.isPalindrome(digit);
         assertTrue(result);
        
     }
@@ -56,22 +71,33 @@ public class IsPalidDromeImpNGTest {
     {
         System.out.println("isNotPalindrome");
         int digit = 41;
-        IsPalidDromeImp instance = new IsPalidDromeImp();
         boolean expResult = false;
-        boolean result = instance.isNotPalindrome(digit);
+        boolean result = palid.isNotPalindrome(digit);
         assertFalse(result);    
     }
     
     @Test
-    public String testReturnPalidrome() 
+    public void testPalidDromeReturn() 
     {
-        System.out.println("isNotPalindrome");
-        String status ="true";
-        IsPalidDromeImp instance = new IsPalidDromeImp();
-        String expResult = null;
-        String result = instance.returnPalidrome();
-        assertNull(result);   
-        return "";
+        
+        int  digit=700;
+        boolean expResult = false;
+        IsPalidDromeImp result;
+        result = palid.ObjectPalidreturn(digit);
+        assertNotNull(result);    
     }
-    
+    @Test
+    public void displayListContent(String listWanted[]) throws Exception
+    {
+       String[] actual =new String[]{"Spur Ribs","T bone Steak","Big Mac Burger"};
+
+       String[] var=new String[]{"Pizza","Rave Burger","Corner Boys"};
+       for(int i=0; i < actual.length;i++)
+       {
+         assertEquals("Two arrays should contain same content",actual[i],var[i]);
+       }
+    }
+
+   
+
 }
