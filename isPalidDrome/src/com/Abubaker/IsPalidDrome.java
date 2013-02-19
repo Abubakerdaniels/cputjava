@@ -10,7 +10,7 @@ package com.Abubaker;
  */
 public interface IsPalidDrome
 {
-    public abstract  boolean isPalindrome(int  number);
+  
     //<editor-fold defaultstate="collapsed" desc="comment">
   
             //</editor-fold>
@@ -19,7 +19,7 @@ public interface IsPalidDrome
      * @param digit
      * @return
      */
-    public abstract  boolean isNotPalindrome(int  digit); 
+    
     /**
      *
      * @return

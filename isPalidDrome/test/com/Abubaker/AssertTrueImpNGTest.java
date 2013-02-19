@@ -15,29 +15,14 @@ import org.testng.annotations.Test;
  *
  * @author Abu
  */
-public class IsPalidDromeImpNGTest {
-    
-    private static IsPalidDrome palid;
-   
-  
-            
-    public IsPalidDromeImpNGTest() 
-    {
-        
+public class AssertTrueImpNGTest {
+    private static AssertTrue palid;
+    public AssertTrueImpNGTest() {
     }
 
-    /**
-     *
-     * @throws Exception
-     */
     @BeforeClass
-    public  void setUpClass() throws Exception
-    {
-      
-        palid=new IsPalidDromeImp();
-        
-        
-                
+    public static void setUpClass() throws Exception {
+        palid=new AssertTrueImp();
     }
 
     @AfterClass
@@ -52,20 +37,19 @@ public class IsPalidDromeImpNGTest {
     public void tearDownMethod() throws Exception {
     }
 
-    /**
-     * Test of isPalindrome method, of class IsPalidDromeImp.
-     */
-    
-  
-    
     @Test
-    public void testPalidDromeReturn() 
-    {
-        int  digit=700;
-        boolean expResult = false;
-        IsPalidDromeImp result;
-        result = palid.ObjectPalidreturn(digit);
-        assertNotNull(result);    
+    public void testSomeMethod() {
+        // TODO review the generated test code and remove the default call to fail.
+       // fail("The test case is a prototype.");
     }
- 
+    @Test
+    public void testIsPalindrome1() 
+    {
+        System.out.println("isPalindrome");
+        int digit = 717;
+        boolean expResult = true;
+        boolean result = palid.isPalindrome(digit);
+        assertTrue(result);
+    }
+    
 }

@@ -2,9 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.Abubaker;
 
 import static org.testng.Assert.*;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -15,29 +17,15 @@ import org.testng.annotations.Test;
  *
  * @author Abu
  */
-public class IsPalidDromeImpNGTest {
-    
-    private static IsPalidDrome palid;
-   
-  
-            
-    public IsPalidDromeImpNGTest() 
-    {
-        
+public class AssertFloatImpNGTest {
+    private static AssertFloat overviewAverage;
+    public AssertFloatImpNGTest() {
     }
 
-    /**
-     *
-     * @throws Exception
-     */
     @BeforeClass
-    public  void setUpClass() throws Exception
+    public static void setUpClass() throws Exception 
     {
-      
-        palid=new IsPalidDromeImp();
-        
-        
-                
+        overviewAverage=new AssertFloatImp();
     }
 
     @AfterClass
@@ -52,20 +40,17 @@ public class IsPalidDromeImpNGTest {
     public void tearDownMethod() throws Exception {
     }
 
-    /**
-     * Test of isPalindrome method, of class IsPalidDromeImp.
-     */
-    
-  
-    
     @Test
-    public void testPalidDromeReturn() 
+    public void testSomeMethod()
     {
-        int  digit=700;
-        boolean expResult = false;
-        IsPalidDromeImp result;
-        result = palid.ObjectPalidreturn(digit);
-        assertNotNull(result);    
+        // TODO review the generated test code and remove the default call to fail.
+        float averaGe=overviewAverage.average(257);
+        float exspected=64;
+        float tolerance=1;
+        //<editor-fold defaultstate="collapsed" desc="comment">
+        Assert.assertEquals(averaGe,exspected,tolerance);
+                //</editor-fold>
+         
+       // fail("The test case is a prototype.");
     }
- 
 }
