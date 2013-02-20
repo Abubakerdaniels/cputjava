@@ -8,8 +8,7 @@ package com.Abubaker;
  *
  * @author Abu
  */
-public interface ArrayAssert 
-{
-      public void insertItem(String Song);
-      public int returnSize();
+public interface AssertInteger {
+    public int getStockRecieved();
+    public void setStockRecieved(int recieved);
 }

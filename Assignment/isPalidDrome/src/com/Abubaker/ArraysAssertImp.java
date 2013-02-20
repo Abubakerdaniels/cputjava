@@ -3,34 +3,28 @@
  * and open the template in the editor.
  */
 package com.Abubaker;
-
+import java.util.*;
 /**
  *
  * @author Abu
  */
 public class ArraysAssertImp implements ArrayAssert 
 {
+    
+    private List<String> album=new ArrayList<String>();
     /**
      *
-     * @param Array
+     * @param 
      * @throws Exception
      */
     @Override
-    public void displayListContent(String listWanted[])
+    public void insertItem(String Song)
     {
-        String[] ListHave=new String[]{"Spur Ribs","T bone Steak","Big Mac Burger"};
-        int j;
-        int i;
-        for( j=0; j< ListHave.length;j++)
-        {
-          for(i=0; i < listWanted.length;i++)
-          {
-             if(listWanted[i].equalsIgnoreCase(ListHave[j]))
-             {
-                System.out.println("Available:"+listWanted[i]);
-             }
-            
-          }
-        }
+           album.add(Song);
+    }
+    public int returnSize()
+    {
+        return album.size();
+        
     }
 }
