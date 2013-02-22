@@ -11,8 +11,8 @@ package com.Abubaker.Assignment11;
 public class AssertObjectImp implements AssertObject
 {
     
-   private int length;
-   private int width;
+   protected int length;
+   protected int width;
     
    @Override
    public void setLength(int length1)
@@ -26,10 +26,16 @@ public class AssertObjectImp implements AssertObject
        width=breadth;
    }
    
-   @Override
+    /**
+     *
+     * @return
+     */
+    @Override
    public AssertObjectImp returnRectangle()
    {
       AssertObjectImp rectangle=new AssertObjectImp();
+      rectangle.setBreadth(20);
+      rectangle.setLength(10);
       return rectangle;
    }
    @Override
@@ -38,6 +44,10 @@ public class AssertObjectImp implements AssertObject
         AssertObjectImp rectangle = null;
         return rectangle;
    }
-   
+   @Override
+   public void displayObject()
+   {
+       System.out.println("Length: "+length+"Width:  "+length);
+   }
    
 }

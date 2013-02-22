@@ -59,7 +59,7 @@ public class AsserFalseNGTest {
       
         System.out.println("isNotPalindrome");
         int digit = 41;
-        boolean expResult = false;
+        boolean expResult=false;
         boolean result = assertF.isNotPalindrome(digit);
         assertFalse(result);    
     }

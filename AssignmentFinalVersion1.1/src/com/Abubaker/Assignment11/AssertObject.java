@@ -12,6 +12,10 @@ public interface AssertObject
 {
    public AssertObjectImp returnRectangle();
    public AssertObjectImp returnNullObject(); 
+    /**
+     *
+     */
+   public void displayObject();
    public void setLength(int length);
    public void setBreadth(int breadth);
  

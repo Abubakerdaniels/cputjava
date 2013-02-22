@@ -126,6 +126,12 @@ public class AppConfig {
            return new AssertObjectImp();
       }
       @Bean(name="Object")
+      public AssertObject displayObject()
+      {
+          return new AssertObjectImp();
+      }
+
+      @Bean(name="Object")
       public AssertObject setBreadth()
       {
           return new AssertObjectImp();
@@ -135,6 +141,6 @@ public class AppConfig {
       {
           return new AssertTrueImp();
       }
-              
+                
     
 }

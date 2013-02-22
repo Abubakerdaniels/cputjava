@@ -82,22 +82,45 @@ public class AssertObjectImpNGTest
         rectangle1 = rectangleO.returnRectangle();
         assertNotSame(rectangle1,rectangleExspected);
     }
+    @Test
     public void testReturnRectangle1()
     {
         AssertObjectImp rectangleExspected = new AssertObjectImp();
         rectangleExspected.setLength(10);
         rectangleExspected.setBreadth(20);
         AssertObjectImp rectangle1;
-        rectangle1 = rectangleO.returnRectangle();
+        rectangle1 =rectangleExspected;
+        System.out.println("length: "+rectangle1.length+"width: "+rectangle1.width);
         assertSame(rectangle1,rectangleExspected);
     }
     @Test
     public void testReturnRectangle12()
     {
-         AssertObjectImp rec2;
+        AssertObjectImp rec2;
         rec2=rectangleO.returnNullObject();
         assertNull(rec2);
         
+    }
+    @Test
+    public void testReturnRectangle3()
+    {
+        AssertObject rectangleExspected;
+        rectangleExspected = (AssertObject) ctx.getBean("Object");
+        rectangleExspected.setLength(10);
+        rectangleExspected.setBreadth(20);
+        assertEquals(rectangleO,rectangleExspected);
+    //    Assert.
+        
+    }
+    /**
+     *
+     */
+    @Test(enabled=false)
+    public void testReturnRectangle4()
+    {
+        rectangleO.setLength(10);
+        rectangleO.setBreadth(20);
+        rectangleO.displayObject();
     }
    
 }
