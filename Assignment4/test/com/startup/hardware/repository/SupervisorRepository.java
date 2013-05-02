@@ -9,7 +9,6 @@ import com.startup.hardware.model.Address;
 import com.startup.hardware.model.Contact;
 import com.startup.hardware.model.LessonParameters;
 import com.startup.hardware.model.Person;
-import com.startup.hardware.model.StoreCustomer;
 import com.startup.hardware.model.Supervisor;
 import com.startup.hardware.model.User;
 import com.startup.hardware.service.crud.PersonCrud;
