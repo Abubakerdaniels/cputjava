@@ -11,6 +11,7 @@ import com.startup.hardware.model.Contact;
  *
  * @author Wallied
  */
-public interface ContactCrud extends Service<Contact,Long>{
+public interface ContactCrud extends Service<Contact,Long>
+{
     
 }

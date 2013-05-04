@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
  * @author Wallied
  */
 @Entity
-public class User implements Serializable {
+public class User1 implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -73,10 +73,10 @@ public class User implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
+        if (!(object instanceof User1)) {
             return false;
         }
-        User other = (User) object;
+        User1 other = (User1) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

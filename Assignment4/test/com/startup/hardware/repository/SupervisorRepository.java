@@ -4,15 +4,19 @@
  */
 package com.startup.hardware.repository;
 
+import com.startup.hardware.app.factory.AbstractFactory;
 import com.startup.hardware.app.factory.AppFactory;
+import com.startup.hardware.app.factory.PersonFactory;
 import com.startup.hardware.model.Address;
 import com.startup.hardware.model.Contact;
 import com.startup.hardware.model.LessonParameters;
 import com.startup.hardware.model.Person;
 import com.startup.hardware.model.Supervisor;
-import com.startup.hardware.model.User;
+import com.startup.hardware.model.User1;
+import com.startup.hardware.service.crud.AddressCrud;
 import com.startup.hardware.service.crud.PersonCrud;
 import com.startup.hardware.service.crud.SupervisorCrud;
+import com.startup.hardware.service.crud.UserCrud;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,6 +37,8 @@ import org.testng.annotations.Test;
 public class SupervisorRepository {
     
     private SupervisorCrud  supervisorCrud;
+    private UserCrud  userCrud;
+    private AddressCrud  addressCrud;
     private Long  id;
     private static ApplicationContext ctx;
     private PersonCrud personCrud; 
@@ -69,6 +75,10 @@ public class SupervisorRepository {
     {
          personCrud=(PersonCrud)ctx.getBean("PersonCrud");
          supervisorCrud=(SupervisorCrud)ctx.getBean("SupervisorCrud");
+         userCrud=(UserCrud)ctx.getBean("UserCrud");
+         addressCrud = (AddressCrud)ctx.getBean("AddressCrud");
+         PersonFactory personFactory =AbstractFactory.getPersonFactory("supervisor");
+         
          
          Map<String,String> personValues=new HashMap<String,String>();
          personValues.put("firstName", "Abubaker");
@@ -77,19 +87,21 @@ public class SupervisorRepository {
          personValues.put("middelName", "Sidiek");
          personValues.put("gender", "male");
         
-         Contact contact=AppFactory.getContact("daniels.abubaker@gmail","0736480130","0219981234","021999111");
+         Contact contact=  AppFactory.getContact("daniels.abubaker@gmail","0736480130","0219981234","021999111");
          Address address=AppFactory.getAddress("17 Hexidecimal Road bishop","17 Hexidecimal Road bishop","7488");
-         User    user=AppFactory.getUser("Amlan","kanman");
+         User1    user=personFactory.getUser("Amlan","Amlan");
+         userCrud.persist(user);
          List<Address> listAddress=new ArrayList<Address>();
          listAddress.add(address);
          LessonParameters lesson;
          lesson = new LessonParameters(contact,listAddress,user);
          Person person;
-         person = AppFactory.getPerson(personValues, lesson);
-         Supervisor supervisor=AppFactory.getSupervisor("Delivery","Transport", person);
-     
+         person = personFactory.getPerson(personValues, lesson);
          
-          supervisorCrud.persist(supervisor);
+         Supervisor  supervisor;
+         supervisor = personFactory.getSupervisor("Delivery","Transport", person);
+         addressCrud.persist(address);
+         supervisorCrud.persist(supervisor);
          id= person.getId();
          Assert.assertNotNull(id,"Testing Persisted Entity");
         

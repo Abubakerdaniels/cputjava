@@ -5,12 +5,12 @@
 package com.startup.hardware.service.crud;
 
 import com.startup.hardware.service.Service.Service;
-import com.startup.hardware.model.User;
+import com.startup.hardware.model.User1;
 
 /**
  *
  * @author Wallied
  */
-public interface UserCrud  extends  Service<User,Long> {
+public interface UserCrud  extends  Service<User1,Long> {
     
 }

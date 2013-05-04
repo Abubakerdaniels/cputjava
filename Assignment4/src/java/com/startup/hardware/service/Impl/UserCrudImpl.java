@@ -4,7 +4,7 @@
  */
 package com.startup.hardware.service.Impl;
 
-import com.startup.hardware.model.User;
+import com.startup.hardware.model.User1;
 import com.startup.hardware.repository.jpa.GenericDAO;
 import com.startup.hardware.service.crud.UserCrud;
 import java.util.List;
@@ -20,38 +20,38 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserCrudImpl implements UserCrud{
      @Autowired
-    private GenericDAO<User> dao;
+    private GenericDAO<User1> dao;
      
-      public final void setDao(final GenericDAO< User> daoToSet) {
+      public final void setDao(final GenericDAO< User1> daoToSet) {
         this.dao = daoToSet;
-        this.dao.setClazz(User.class);
+        this.dao.setClazz(User1.class);
     }
       
-    public User findById(Long id)
+    public User1 findById(Long id)
     {
         setDao(dao);
         return dao.findById(id);
     }
 
-    public List<User> findAll()
+    public List<User1> findAll()
     {
         setDao(dao);
         return dao.findAll();
     }
 
-    public void persist(User entity)
+    public void persist(User1 entity)
     {
          setDao(dao);
         dao.persist(entity);
     }
 
-    public void merge(User entity)
+    public void merge(User1 entity)
     {
         setDao(dao);
         dao.merge(entity);
     }
 
-    public void remove(User entity)
+    public void remove(User1 entity)
     {
         setDao(dao);
         dao.remove(entity);
@@ -60,11 +60,11 @@ public class UserCrudImpl implements UserCrud{
     public void removeById(Long entityId) 
     {
         setDao(dao);
-        User v = dao.findById(entityId);
+        User1 v = dao.findById(entityId);
         dao.remove(v);
     }
 
-    public List<User> findInRange(int firstResult, int maxResults)
+    public List<User1> findInRange(int firstResult, int maxResults)
     {
         setDao(dao);
         return dao.findInRange(firstResult, maxResults);
@@ -76,13 +76,13 @@ public class UserCrudImpl implements UserCrud{
         return dao.count();
     }
 
-    public User getByPropertyName(String name, String value) 
+    public User1 getByPropertyName(String name, String value) 
     {
          setDao(dao);
          return dao.getByPropertyName(name, value);
     }
 
-    public List<User> getEntitiesByProperName(String name, String value)
+    public List<User1> getEntitiesByProperName(String name, String value)
     {
             setDao(dao);
             return dao.getEntitiesByProperName(name, value);

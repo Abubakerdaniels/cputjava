@@ -25,17 +25,19 @@ public class ContactCrudImpl implements ContactCrud
     private GenericDAO<Contact> dao;
    
     
-  public final void setDao(final GenericDAO< Contact> daoToSet) {
+  public final void setDao(final GenericDAO<Contact> daoToSet) {
         this.dao = daoToSet;
         this.dao.setClazz(Contact.class);
     }
 
     
     @Override
-    public Contact findById(Long id) {
+    public Contact findById(Long id) 
+    {
         setDao(dao);
         return dao.findById(id);
     }
+    
     @Override
     public List<Contact> findAll() {
         setDao(dao);

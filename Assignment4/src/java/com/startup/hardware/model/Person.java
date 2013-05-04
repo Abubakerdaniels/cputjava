@@ -61,11 +61,11 @@ public class Person implements Serializable
         this.address = address;
     }
 
-    public User getUser() {
+    public User1 getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(User1 user) {
         this.user = user;
     }
 
@@ -82,7 +82,7 @@ public class Person implements Serializable
     private List<Address>  address;
     
     @OneToOne
-    private  User user;
+    private  User1 user;
     
     public String getFirstName() {
         return firstName;

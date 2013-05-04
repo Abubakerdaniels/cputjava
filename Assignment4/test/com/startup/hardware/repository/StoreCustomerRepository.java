@@ -10,11 +10,12 @@ import com.startup.hardware.model.Contact;
 import com.startup.hardware.model.LessonParameters;
 import com.startup.hardware.model.Person;
 import com.startup.hardware.model.StoreCustomer;
-import com.startup.hardware.model.User;
+import com.startup.hardware.model.User1;
 import com.startup.hardware.service.crud.AddressCrud;
 import com.startup.hardware.service.crud.ContactCrud;
 import com.startup.hardware.service.crud.PersonCrud;
 import com.startup.hardware.service.crud.StoreCustomerCrud;
+import com.startup.hardware.service.crud.UserCrud;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +36,9 @@ import org.testng.annotations.Test;
 public class StoreCustomerRepository 
 {
     private StoreCustomerCrud storeCustomer;
-    private ContactCrud  contactCrud;
+    //private ContactCrud  contactCrud;
+    
+    private UserCrud  userCrud;
     private AddressCrud  addressCrud;
     private long id;
     private static ApplicationContext  ctx;
@@ -73,10 +76,11 @@ public class StoreCustomerRepository
     public  void   testStoreCustomer()
     {
          personCrud=(PersonCrud)ctx.getBean("PersonCrud");
-         contactCrud=(ContactCrud)ctx.getBean("ContactCrud");
+         //contactCrud=(ContactCrud)ctx.getBean("ContactCrud");
          storeCustomer=(StoreCustomerCrud)ctx.getBean("StoreCustomerCrud");
-         contactCrud=(ContactCrud)ctx.getBean("ContactCrud");
+         //contactCrud=(ContactCrud)ctx.getBean("ContactCrud");
          addressCrud=(AddressCrud)ctx.getBean("AddressCrud");
+         userCrud=(UserCrud)ctx.getBean("UserCrud");
         
          Map<String,String> personValues=new HashMap<String,String>();
          personValues.put("firstName", "Abubaker");
@@ -88,9 +92,10 @@ public class StoreCustomerRepository
          Contact contact=AppFactory.getContact("daniels.abubaker@gmail","0736480130","0219981234","021999111");
          Address address=AppFactory.getAddress("17 Hexidecimal Road bishop","17 Hexidecimal Road bishop","7488");
          addressCrud.persist(address);
-         contactCrud.persist(contact);
+         //contactCrud.persist(contact);
          
-         User    user=AppFactory.getUser("Amlan","kanman");
+         User1    user=AppFactory.getUser("Amlan","kanman");
+         userCrud.persist(user);
          List<Address> listAddress=new ArrayList<Address>();
          listAddress.add(address);
          LessonParameters lesson;

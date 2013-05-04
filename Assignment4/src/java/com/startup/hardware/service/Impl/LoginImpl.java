@@ -8,7 +8,7 @@ import com.startup.hardware.model.Person;
 import com.startup.hardware.model.SalesPerson;
 import com.startup.hardware.model.StoreCustomer;
 import com.startup.hardware.model.Supervisor;
-import com.startup.hardware.model.User;
+import com.startup.hardware.model.User1;
 import com.startup.hardware.service.Service.LoginService;
 import com.startup.hardware.service.crud.SalesPersonCrud;
 import com.startup.hardware.service.crud.StoreCustomerCrud;
@@ -41,7 +41,7 @@ public class LoginImpl implements LoginService
        for(int i=0; i < allSalesPerson.size();i++)
        {
              Person person= allSalesPerson.get(i).getPerson();
-             User user=person.getUser();
+             User1 user=person.getUser();
              if(user.getPassWord().equalsIgnoreCase(salesPerson.getPerson().getUser().getPassWord()))
              {
                  if(user.getUserName().equalsIgnoreCase(salesPerson.getPerson().getUser().getUserName()))
@@ -67,7 +67,7 @@ public class LoginImpl implements LoginService
         for(int i=0; i < allSalesPerson.size();i++)
        {
              Person person= allSalesPerson.get(i).getPerson();
-             User user;
+             User1 user;
              user = person.getUser();
              if(user.getPassWord().equalsIgnoreCase(salesPerson.getPerson().getUser().getPassWord()))
              {
@@ -90,7 +90,7 @@ public class LoginImpl implements LoginService
          for(int i=0; i < allCustomer.size();i++)
          {
              Person person= allCustomer.get(i).getPerson();
-             User user;
+             User1 user;
              user = person.getUser();
              if(user.getPassWord().equalsIgnoreCase(customer.getPerson().getUser().getPassWord()))
              {

@@ -18,7 +18,7 @@ import com.startup.hardware.model.Sales;
 import com.startup.hardware.model.SalesPerson;
 import com.startup.hardware.model.StoreCustomer;
 import com.startup.hardware.model.Supervisor;
-import com.startup.hardware.model.User;
+import com.startup.hardware.model.User1;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -104,7 +104,7 @@ public class AppFactory
       }
       
     @SuppressWarnings({"deprecation", "deprecation"})
-      public static   Person getPerson(Map<String,String> values,LessonParameters  lesson)
+      public static   Person getPerson(Map<String,String>  values,LessonParameters  lesson)
       {
           Person person=new Person();
           person.setDateOfBirth(new Date(Date.parse(values.get("dateOfBirth"))));
@@ -118,9 +118,9 @@ public class AppFactory
           return person;
       }
     
-      public static  User getUser(String userName,String passWord )
+      public static  User1 getUser(String userName,String passWord )
       {
-         User user=new User();
+         User1 user=new User1();
          user.setPassWord(passWord);
          user.setUserName(userName);
          return user;
