@@ -7,6 +7,7 @@ package com.startup.hardware.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,10 +38,10 @@ public class Item1 implements Serializable
         this.quantity = quantity;
     }
             
-    @OneToMany
+    @OneToMany(orphanRemoval=true,cascade= CascadeType.ALL)
     @JoinColumn(name="SerialNumber")
-    private List<ItemSpecific> itemSpecific=new  ArrayList<ItemSpecific>();
-
+    private List<ItemSpecific> itemSpecific;
+    
     public List<ItemSpecific> getItemSpecific() {
         return itemSpecific;
     }

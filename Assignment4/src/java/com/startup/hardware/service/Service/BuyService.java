@@ -22,6 +22,8 @@ public interface BuyService
      * @param salesPerson
      * @return
      */
+  
+    
     
     public  Invoice1 buy(List<ItemSpecific>  item1,SalesPerson salesPerson,StoreCustomer customer);
     

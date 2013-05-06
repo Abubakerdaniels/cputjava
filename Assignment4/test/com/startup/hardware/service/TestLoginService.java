@@ -8,7 +8,7 @@ import com.startup.hardware.model.Person;
 import com.startup.hardware.model.SalesPerson;
 import com.startup.hardware.model.StoreCustomer;
 import com.startup.hardware.model.Supervisor;
-import com.startup.hardware.service.Impl.LoginImpl;
+import com.startup.hardware.service.ServiceImpl.LoginImpl;
 import com.startup.hardware.service.Service.LoginService;
 //import com.startup.hardware.service.Service.LoginSupervisor;
 import org.testng.Assert;
@@ -27,11 +27,11 @@ public class TestLoginService
     private   static  TestLoginService   testLogin;
     private   String  passWord;
     private   String  userName;
-    private   static LoginService service;
+    private   static  LoginService service;
             
     private TestLoginService() 
     {
-        
+         service=LoginImpl.getInstance();   
     }
     
     public   synchronized   static  TestLoginService  instance()
@@ -47,15 +47,13 @@ public class TestLoginService
     //
      @Test
      public void testSupervisorLogin() 
-     {
-        // service=LoginSupervisor.instance();
-         Supervisor  supervisor;
-         passWord="gold";
-         userName="gold";
+     {  
+         passWord="kanman";
+         userName="Amlan";
          
         
-         boolean access=true;
-        // access = service.loginSupervisor(passWord,userName);
+         boolean access;
+         access = service.loginSupervisor(passWord,userName);
          Assert.assertTrue(access,"Login Denied Supervisor");
          
      }
@@ -65,16 +63,11 @@ public class TestLoginService
     //@Test
      public  void testLoginSalesPerson()
      {
+         passWord="Amlan";
+         userName="Amlan";
          
-         SalesPerson salesPerson=new SalesPerson();
-         Person person = new Person();
-         passWord="Silver";
-         userName="Silver";
-         salesPerson.setPerson(person);
-         salesPerson.getPerson().getUser().setPassWord(passWord);
-         salesPerson.getPerson().getUser().setUserName(userName);
          boolean access;
-         access = service.loginSalesPerson(salesPerson);
+         access = service.loginSalesPerson(passWord,userName);
          Assert.assertTrue(access,"Login Denied Sales Person");
          
      }
@@ -84,23 +77,19 @@ public class TestLoginService
      */
     public  void   testLoginCustomer()
     {
-          StoreCustomer customer;
-          customer = new  StoreCustomer();
-          Person person=new Person();
-          passWord="bronze";
-          userName="bronze";
-          customer.setPerson(person);
-          customer.getPerson().getUser().setPassWord(passWord);
-          customer.getPerson().getUser().setUserName(userName);
+          
+          passWord="kanman";
+          userName="Amlan";
+          
           boolean access;
-          access = service.loginCustomer(customer);
+          access = service.loginCustomer(passWord,userName);
           Assert.assertTrue(access,"Login Denied Customer");
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception
     {
-          service=new LoginImpl();
+          service=LoginImpl.getInstance();
     }
 
     @AfterClass

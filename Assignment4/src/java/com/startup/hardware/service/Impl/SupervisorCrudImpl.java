@@ -43,7 +43,7 @@ public class SupervisorCrudImpl implements SupervisorCrud {
     public void persist(Supervisor entity)
     {
          setDao(dao);
-        dao.persist(entity);
+         dao.persist(entity);
     }
 
     public void merge(Supervisor entity)

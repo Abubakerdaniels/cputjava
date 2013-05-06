@@ -16,6 +16,14 @@ public class AbstractFactory
           {
               return   SupervisorFactory.getInstance();
           }
+          else if(type.equalsIgnoreCase("customer"))
+          {
+                return  StoreCustomerFactory.getInstance();
+          }
+          else if(type.equalsIgnoreCase("salesPerson"))
+          {
+               return  SalesPersonFactory.getInstance();
+          }
           else
           {
                return null;

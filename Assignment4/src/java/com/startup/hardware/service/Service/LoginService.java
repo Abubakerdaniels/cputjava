@@ -14,7 +14,13 @@ import com.startup.hardware.model.Supervisor;
  */
 public interface LoginService 
 {
-       public  boolean loginSupervisor(Supervisor supervisor);    
-       public  boolean loginSalesPerson(SalesPerson salesPerson);
-       public  boolean loginCustomer(StoreCustomer  customer);
+       public  boolean loginSupervisor(String password,String username);    
+       /**
+     *
+     * @param password
+     * @param username
+     * @return
+     */
+      public  boolean loginSalesPerson(String password,String username);
+       public  boolean loginCustomer(String password,String username);
 }
