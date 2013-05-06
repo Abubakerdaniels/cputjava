@@ -49,6 +49,7 @@ public class TestBuyService {
           values.put("Description","Water pype");
           values.put("name","solid works");
           ItemSpecific itemSpecific=AppFactory.getItemSpecific(values);
+          all.add(itemSpecific);
           Invoice1 buy = service.buy(all, null, null);
           
     }

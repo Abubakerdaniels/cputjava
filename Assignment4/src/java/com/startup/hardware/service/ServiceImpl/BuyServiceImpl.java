@@ -13,7 +13,9 @@ import com.startup.hardware.service.Service.BuyService;
 import com.startup.hardware.service.crud.InvoiceCrud;
 import com.startup.hardware.service.crud.ItemCrud;
 import com.startup.hardware.service.crud.ItemSpecificCrud;
+import com.startup.hardware.service.crud.SalesPersonCrud;
 import java.util.List;
+import org.joda.time.DateTime;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -29,6 +31,7 @@ public class BuyServiceImpl implements BuyService
     private    InvoiceCrud  invoiceCrud;
     private    ItemCrud   itemCrud;
     private    ItemSpecificCrud  itemSpecificCrud;
+    private    SalesPersonCrud   salesPersonCrud;
     private    ApplicationContext ctx;
     
     private  BuyServiceImpl()
@@ -54,7 +57,7 @@ public class BuyServiceImpl implements BuyService
         itemCrud=(ItemCrud)ctx.getBean("ItemCrud");
         List<Item1> items=itemCrud.findAll();
         List<ItemSpecific>  itemSpecifics= itemSpecificCrud.findAll();
-        int f =0;
+        int f =1;
         for(int  i =0;i  < itemSpecifics.size(); i++)
         {    
              if(items.get(i).getQuantity() == 0)
@@ -64,13 +67,15 @@ public class BuyServiceImpl implements BuyService
              }
              else 
              {
-                 
-                 if(item1.size()  <  f)
+                 System.out.println("Inside First IF");
+                 if(f  <=  item1.size())
                  {
+                     System.out.println("Inside First IF");
                      f++;     
-                      if(itemSpecifics.get(i).getName().equalsIgnoreCase(item1.get(f).getName()))
+                      if(itemSpecifics.get(i).getName().equalsIgnoreCase(item1.get(i).getName()))
                       {
                         int quantity=items.get(i).getQuantity()-1;
+                        System.out.println(""+quantity);
                         Item1 itemss=items.get(i);
                         itemss.setQuantity(quantity);
                         itemCrud.merge(itemss);
@@ -82,5 +87,22 @@ public class BuyServiceImpl implements BuyService
         
         return  invoice;
     }
-    
+    public   void  increaseSalesTurnOver(SalesPerson salesPerson)
+    {
+        
+        DateTime  date=new DateTime();
+        salesPersonCrud=(SalesPersonCrud)ctx.getBean("salesPersonCrud");
+        SalesPerson salesPersonData;
+        salesPersonData = salesPersonCrud.findById(salesPerson.getId());
+        int endof=0;
+        date.dayOfMonth().addToCopy(endof);
+        System.out.println("Day of Month"+endof);
+        
+        if(endof < 29)
+        {
+             Double sales=salesPersonData.getHisMonthTurnOver()+salesPerson.getDaily_SalesHandled();
+             salesPersonData.setHisMonthTurnOver(sales);
+        }
+        
+    }
 }
