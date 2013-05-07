@@ -4,16 +4,21 @@
  */
 package com.startup.hardware.service.ServiceImpl;
 
+import com.startup.hardware.app.factory.AppFactory;
+import com.startup.hardware.model.Address;
+import com.startup.hardware.model.Contact;
 import com.startup.hardware.model.Invoice1;
 import com.startup.hardware.model.Item1;
 import com.startup.hardware.model.ItemSpecific;
 import com.startup.hardware.model.SalesPerson;
 import com.startup.hardware.model.StoreCustomer;
+import com.startup.hardware.model.User1;
 import com.startup.hardware.service.Service.BuyService;
 import com.startup.hardware.service.crud.InvoiceCrud;
 import com.startup.hardware.service.crud.ItemCrud;
 import com.startup.hardware.service.crud.ItemSpecificCrud;
 import com.startup.hardware.service.crud.SalesPersonCrud;
+import com.startup.hardware.service.crud.UserCrud;
 import java.util.List;
 import org.joda.time.DateTime;
 import org.springframework.context.ApplicationContext;
@@ -33,6 +38,7 @@ public class BuyServiceImpl implements BuyService
     private    ItemSpecificCrud  itemSpecificCrud;
     private    SalesPersonCrud   salesPersonCrud;
     private    ApplicationContext ctx;
+    private    UserCrud  userCrud;
     
     private  BuyServiceImpl()
     {
@@ -57,7 +63,8 @@ public class BuyServiceImpl implements BuyService
         itemCrud=(ItemCrud)ctx.getBean("ItemCrud");
         List<Item1> items=itemCrud.findAll();
         List<ItemSpecific>  itemSpecifics= itemSpecificCrud.findAll();
-        int f =1;
+        int f =0;
+        
         for(int  i =0;i  < itemSpecifics.size(); i++)
         {    
              if(items.get(i).getQuantity() == 0)
@@ -79,7 +86,7 @@ public class BuyServiceImpl implements BuyService
                         Item1 itemss=items.get(i);
                         itemss.setQuantity(quantity);
                         itemCrud.merge(itemss);
-                       
+                        increaseSalesTurnOver(salesPerson);
                       }
                  }
              }
@@ -89,19 +96,24 @@ public class BuyServiceImpl implements BuyService
     }
     public   void  increaseSalesTurnOver(SalesPerson salesPerson)
     {
+      
+        
         
         DateTime  date=new DateTime();
-        salesPersonCrud=(SalesPersonCrud)ctx.getBean("salesPersonCrud");
+        salesPersonCrud=(SalesPersonCrud)ctx.getBean("SalesPersonCrud");
         SalesPerson salesPersonData;
         salesPersonData = salesPersonCrud.findById(salesPerson.getId());
         int endof=0;
         date.dayOfMonth().addToCopy(endof);
         System.out.println("Day of Month"+endof);
-        
+        System.out.println(endof);
         if(endof < 29)
         {
              Double sales=salesPersonData.getHisMonthTurnOver()+salesPerson.getDaily_SalesHandled();
              salesPersonData.setHisMonthTurnOver(sales);
+             salesPersonCrud.merge(salesPersonData);
+            //Assert.doesContain(salesPersonData.getHisMonthTurnOver().toString(),sales.toString());
+            //Assert.
         }
         
     }

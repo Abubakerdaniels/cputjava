@@ -72,10 +72,10 @@ public class InvoiceRepository
         id= invoice1.getId();
         Assert.assertNotNull(id,"Testing Persisted Entity");
         
-        invoiceCrud.remove(invoice1);
+       // invoiceCrud.remove(invoice1);
 
         //Test tyo see if We have Deleted 
-        Invoice1 invoice11 = invoiceCrud.findById(id);
-        Assert.assertNull(invoice11,"Testing for Deleted InvoiceItem" ); 
+       // Invoice1 invoice11 = invoiceCrud.findById(id);
+     //   Assert.assertNull(invoice11,"Testing for Deleted InvoiceItem" ); 
     }
 }

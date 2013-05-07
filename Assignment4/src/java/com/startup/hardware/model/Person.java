@@ -81,7 +81,7 @@ public class Person implements Serializable
     @JoinColumn(name="PersonID")
     private List<Address>  address;
     
-    @OneToOne
+    @OneToOne(orphanRemoval=true, cascade= CascadeType.ALL)
     private  User1 user;
     
     public String getFirstName() {

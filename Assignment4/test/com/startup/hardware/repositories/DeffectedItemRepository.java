@@ -92,10 +92,10 @@ public class DeffectedItemRepository {
         id= deffectedItems.getId();
         Assert.assertNotNull(id,"Testing Persisted Entity");
         
-        deffectedItemsCrud.remove(deffectedItems);
+      //  deffectedItemsCrud.remove(deffectedItems);
 
         //Test tyo see if We have Deleted 
-        DeffectedItems defect = deffectedItemsCrud.findById(deffectedItems.getId());
-        Assert.assertNull(defect,"Testing for Deleted DeffectedItem" ); 
+      //  DeffectedItems defect = deffectedItemsCrud.findById(deffectedItems.getId());
+      //  Assert.assertNull(defect,"Testing for Deleted DeffectedItem" ); 
      }
 }

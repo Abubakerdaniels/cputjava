@@ -55,7 +55,7 @@ public class SalesPerson implements Serializable {
         this.person = person;
     }
 
-    @OneToMany(orphanRemoval=true,cascade= CascadeType.ALL)
+    @OneToMany//(orphanRemoval=true,cascade= CascadeType.ALL)
     @JoinColumn(name="SalesID")
     private  List<Sales> sales;
 

@@ -100,11 +100,11 @@ public class PersonRepository {
          id= person.getId();
          Assert.assertNotNull(id,"Testing Persisted Entity");
         
-        personCrud.remove(person);
+       // personCrud.remove(person);
 
         // Test tyo see if We have Deleted 
-         Person person1 =  personCrud.findById(person.getId());
-         Assert.assertNull(person1,"Testing for Deleted Person" ); 
+        // Person person1 =  personCrud.findById(person.getId());
+        // Assert.assertNull(person1,"Testing for Deleted Person" ); 
          
     }
 }

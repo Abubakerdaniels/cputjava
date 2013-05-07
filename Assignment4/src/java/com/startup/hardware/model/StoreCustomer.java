@@ -46,7 +46,8 @@ public class StoreCustomer implements Serializable {
         this.credit = credit;
     }
 
-    public String getCompany_Name() {
+    public String getCompany_Name() 
+    {
         return company_Name;
     }
 

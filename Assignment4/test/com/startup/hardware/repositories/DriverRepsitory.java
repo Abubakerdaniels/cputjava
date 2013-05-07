@@ -68,10 +68,10 @@ public class DriverRepsitory {
         id= driver.getId();
         Assert.assertNotNull(id,"Testing Persisted Entity");
         
-        driverCrud.remove(driver);
+        //driverCrud.remove(driver);
 
         //Test tyo see if We have Deleted 
-        Driver driver1 = driverCrud.findById(id);
-        Assert.assertNull(driver1,"Testing for Deleted DriverItem" ); 
+       // Driver driver1 = driverCrud.findById(id);
+      //  Assert.assertNull(driver1,"Testing for Deleted DriverItem" ); 
     }
 }

@@ -18,9 +18,9 @@
     </test>
     -->
     
-    <test name="com.startup.hardware.repository suite">
+    <test name="com.startup.hardware.repositories suite">
         <packages>
-            <package name="com.startup.hardware.repository"/>
+            <package name="com.startup.hardware.repositories"/>
         </packages>
     </test>
 
