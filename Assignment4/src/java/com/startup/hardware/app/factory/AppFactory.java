@@ -92,7 +92,7 @@ public class AppFactory
             Invoice1 invoice=new Invoice1();
             invoice.setCompanyTo(values.get("companyTo"));
             invoice.setDatePrinteds(new Date());
-            invoice.setSupplier(values.get("supplier"));
+            invoice.setSupplier("WareHouse Builders");
             return  invoice; 
       }
       public static Item1 getItem(List<ItemSpecific> itemSpecific)

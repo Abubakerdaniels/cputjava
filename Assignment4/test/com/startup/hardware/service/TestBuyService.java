@@ -14,6 +14,7 @@ import com.startup.hardware.model.ItemSpecific;
 import com.startup.hardware.model.LessonParameters;
 import com.startup.hardware.model.Person;
 import com.startup.hardware.model.SalesPerson;
+import com.startup.hardware.model.StoreCustomer;
 import com.startup.hardware.model.User1;
 import com.startup.hardware.service.Service.BuyService;
 import com.startup.hardware.service.ServiceImpl.BuyServiceImpl;
@@ -99,8 +100,15 @@ public class TestBuyService {
          SalesPerson  salesP=personFactory.getSalesPerson(salePvalues, person);
          Long id=Long.parseLong("9");
          salesP.setId(id);
-         Invoice1 buy = service.buy(all,salesP, null);
-          
+         Map<String,String>   invoiceValues=new HashMap<String,String>();
+         invoiceValues.put("companyTo","");
+         invoiceValues.put("supplierUs","BuilderWarehouse");
+         
+         personFactory=AbstractFactory.getPersonFactory("customer");
+         Long id1=Long.parseLong("4");
+         StoreCustomer   customer1=personFactory.getStoreCustomers(id,"  ", person);
+         customer1.setId(id1);
+         Invoice1 buy = service.buy(all,salesP, customer1);
     }
     
 

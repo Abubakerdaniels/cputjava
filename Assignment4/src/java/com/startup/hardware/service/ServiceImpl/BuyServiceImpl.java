@@ -4,6 +4,7 @@
  */
 package com.startup.hardware.service.ServiceImpl;
 
+import com.startup.hardware.app.factory.AppFactory;
 import com.startup.hardware.model.Invoice1;
 import com.startup.hardware.model.Item1;
 import com.startup.hardware.model.ItemSpecific;
@@ -14,8 +15,11 @@ import com.startup.hardware.service.crud.InvoiceCrud;
 import com.startup.hardware.service.crud.ItemCrud;
 import com.startup.hardware.service.crud.ItemSpecificCrud;
 import com.startup.hardware.service.crud.SalesPersonCrud;
+import com.startup.hardware.service.crud.StoreCustomerCrud;
 import com.startup.hardware.service.crud.UserCrud;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.joda.time.DateTime;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -35,7 +39,7 @@ public class BuyServiceImpl implements BuyService
     private    SalesPersonCrud   salesPersonCrud;
     private    ApplicationContext ctx;
     private    UserCrud  userCrud;
-    private    StoreCustomer    storeCustomerCrud;
+    private    StoreCustomerCrud    storeCustomerCrud;
     
     
     
@@ -57,7 +61,7 @@ public class BuyServiceImpl implements BuyService
     {
         Invoice1  invoice=new Invoice1();
        
-        invoiceCrud=(InvoiceCrud) ctx.getBean("InvoiceCrud");
+       
         itemSpecificCrud=(ItemSpecificCrud)ctx.getBean("ItemSpecificCrud");
         itemCrud=(ItemCrud)ctx.getBean("ItemCrud");
         List<Item1> items=itemCrud.findAll();
@@ -88,7 +92,7 @@ public class BuyServiceImpl implements BuyService
                         increaseSalesTurnOver(salesPerson);
                         invoice=decreaseCredit(customer);
                       }
-                       f++;     
+                      f++;     
                  }
              }
         }
@@ -102,6 +106,7 @@ public class BuyServiceImpl implements BuyService
         
         DateTime  date=new DateTime();
         salesPersonCrud=(SalesPersonCrud)ctx.getBean("SalesPersonCrud");
+        invoiceCrud=(InvoiceCrud) ctx.getBean("InvoiceCrud");
         SalesPerson salesPersonData;
         salesPersonData = salesPersonCrud.findById(salesPerson.getId());
         int endof=0;
@@ -121,8 +126,16 @@ public class BuyServiceImpl implements BuyService
     
    public   Invoice1 decreaseCredit(StoreCustomer   customer)
    {
+       Map<String,String>   invoiceValues=new HashMap<String,String>();
+       storeCustomerCrud=(StoreCustomerCrud)ctx.getBean("StoreCustomerCrud");
+       StoreCustomer  custmerData=storeCustomerCrud.findById(customer.getId());
+       invoiceCrud=(InvoiceCrud) ctx.getBean("InvoiceCrud");
        
-       return   new Invoice1();
+       invoiceValues.put("companyTo",""+custmerData.getCompany_Name());
+       invoiceValues.put("supplierUs","BuilderWarehouse");
+       Invoice1  invoice = AppFactory.getInvoice(invoiceValues);
+       invoiceCrud.persist(invoice);
+       return    invoice;
        
    }
 }
