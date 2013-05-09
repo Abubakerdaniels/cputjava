@@ -4,8 +4,7 @@
  */
 package com.startup.hardware.service.ServiceImpl;
 
-import com.startup.hardware.app.factory.AbstractFactory;
-import com.startup.hardware.app.factory.PersonFactory;
+
 import com.startup.hardware.model.Person;
 import com.startup.hardware.model.SalesPerson;
 import com.startup.hardware.model.StoreCustomer;

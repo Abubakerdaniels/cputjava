@@ -2,11 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.startup.hardware.repositories;
+package com.startup.hardware.repository;
 
-import com.startup.hardware.app.factory.AbstractFactory;
 import com.startup.hardware.app.factory.AppFactory;
-import com.startup.hardware.app.factory.PersonFactory;
 import com.startup.hardware.model.Address;
 import com.startup.hardware.model.Contact;
 import com.startup.hardware.model.LessonParameters;
@@ -68,7 +66,7 @@ public class SalesPersonRepository {
     public void tearDownMethod() throws Exception {
     }
     @Test
-    public   void  testStoreCustomerCrud()
+    public  void  testStoreCustomerCrud()
     {
          personCrud=(PersonCrud)ctx.getBean("PersonCrud");
          salePersonCrud=(SalesPersonCrud)ctx.getBean("SalesPersonCrud");
@@ -78,37 +76,38 @@ public class SalesPersonRepository {
          personValues.put("dateOfBirth","04-feb-1990");
          personValues.put("middelName", "Grobler");
          personValues.put("gender", "male");
-         PersonFactory personFactory =AbstractFactory.getPersonFactory("salesPerson");
-         
+        
          Contact contact=AppFactory.getContact("Grobler.abubaker@gmail","0736487777","0219981888","021999999");
          Address address;
          address = AppFactory.getAddress("18 Hexidecimal Road bellville","17Hexidecimal Road bellville","9488");
-         User1    user=personFactory.getUser("Amlan","kanman");
+         User1    user1;
+         user1 = AppFactory.getUser("Amlan","kanman");
          userCrud=(UserCrud)ctx.getBean("UserCrud");
-         userCrud.persist(user);
+         userCrud.persist(user1);
+        
          List<Address> listAddress=new ArrayList<Address>();
          listAddress.add(address);
          LessonParameters lesson;
-         lesson = new LessonParameters(contact,listAddress,user);
+         lesson = new LessonParameters(contact,listAddress,user1);
          Person person;
-         person = personFactory.getPerson(personValues, lesson);
+         person = AppFactory.getPerson(personValues, lesson);
          
          Map<String,String>  salePvalues=new HashMap<String,String>();
          salePvalues.put("daily_SalesHandled","10");
          salePvalues.put("hisMonthTurnOver", "9000");
          salePvalues.put("temp", "true");
          salePvalues.put("fullTime","true");
-         SalesPerson salesPerson=personFactory.getSalesPerson(salePvalues, person);
-         
+         SalesPerson salesPerson=AppFactory.getSalesPerson(salePvalues, person);
+         personCrud.persist(person);
          salePersonCrud.persist(salesPerson);
          id= person.getId();
          Assert.assertNotNull(id,"Testing Persisted Entity");
         
-        // salePersonCrud.remove(salesPerson);
+         salePersonCrud.remove(salesPerson);
 
          //Test tyo see if We have Deleted 
-      //   SalesPerson salesPerson1 =  salePersonCrud.findById(person.getId());
-      //   Assert.assertNull(salesPerson1,"Testing for Deleted Sales Person" ); 
+         SalesPerson salesPerson1 =  salePersonCrud.findById(person.getId());
+         Assert.assertNull(salesPerson1,"Testing for Deleted Sales Person" ); 
          
          
     }

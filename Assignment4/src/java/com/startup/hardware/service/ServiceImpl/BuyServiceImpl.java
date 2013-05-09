@@ -4,15 +4,11 @@
  */
 package com.startup.hardware.service.ServiceImpl;
 
-import com.startup.hardware.app.factory.AppFactory;
-import com.startup.hardware.model.Address;
-import com.startup.hardware.model.Contact;
 import com.startup.hardware.model.Invoice1;
 import com.startup.hardware.model.Item1;
 import com.startup.hardware.model.ItemSpecific;
 import com.startup.hardware.model.SalesPerson;
 import com.startup.hardware.model.StoreCustomer;
-import com.startup.hardware.model.User1;
 import com.startup.hardware.service.Service.BuyService;
 import com.startup.hardware.service.crud.InvoiceCrud;
 import com.startup.hardware.service.crud.ItemCrud;
@@ -39,6 +35,9 @@ public class BuyServiceImpl implements BuyService
     private    SalesPersonCrud   salesPersonCrud;
     private    ApplicationContext ctx;
     private    UserCrud  userCrud;
+    private    StoreCustomer    storeCustomerCrud;
+    
+    
     
     private  BuyServiceImpl()
     {
@@ -75,11 +74,11 @@ public class BuyServiceImpl implements BuyService
              else 
              {
                  System.out.println("Inside First IF");
-                 if(f  <=  item1.size())
+                 if(f  <  item1.size())
                  {
                      System.out.println("Inside First IF");
-                     f++;     
-                      if(itemSpecifics.get(i).getName().equalsIgnoreCase(item1.get(i).getName()))
+                    
+                      if(itemSpecifics.get(i).getName().equalsIgnoreCase(item1.get(f).getName()))
                       {
                         int quantity=items.get(i).getQuantity()-1;
                         System.out.println(""+quantity);
@@ -87,7 +86,9 @@ public class BuyServiceImpl implements BuyService
                         itemss.setQuantity(quantity);
                         itemCrud.merge(itemss);
                         increaseSalesTurnOver(salesPerson);
+                        invoice=decreaseCredit(customer);
                       }
+                       f++;     
                  }
              }
         }
@@ -117,4 +118,11 @@ public class BuyServiceImpl implements BuyService
         }
         
     }
+    
+   public   Invoice1 decreaseCredit(StoreCustomer   customer)
+   {
+       
+       return   new Invoice1();
+       
+   }
 }

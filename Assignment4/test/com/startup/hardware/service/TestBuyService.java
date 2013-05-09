@@ -66,11 +66,11 @@ public class TestBuyService {
           
           
           Map<String,String> personValues=new HashMap<String,String>();
-         personValues.put("firstName", "Abubaker");
-         personValues.put("lastName1", "Daniels");
-         personValues.put("dateOfBirth","01-Jan-1990");
-         personValues.put("middelName", "Sidiek");
-         personValues.put("gender", "male");
+          personValues.put("firstName", "Abubaker");
+          personValues.put("lastName1", "Daniels");
+          personValues.put("dateOfBirth","01-Jan-1990");
+          personValues.put("middelName", "Sidiek");
+          personValues.put("gender", "male");
         
          Contact contact=AppFactory.getContact("daniels.abubaker@gmail","0736480130","0219981234","021999111");
          Address address=AppFactory.getAddress("17 Hexidecimal Road bishop","17 Hexidecimal Road bishop","7488");
@@ -97,7 +97,7 @@ public class TestBuyService {
           
          PersonFactory personFactory=AbstractFactory.getPersonFactory("salesPerson");
          SalesPerson  salesP=personFactory.getSalesPerson(salePvalues, person);
-         Long id=Long.parseLong("1");
+         Long id=Long.parseLong("9");
          salesP.setId(id);
          Invoice1 buy = service.buy(all,salesP, null);
           
