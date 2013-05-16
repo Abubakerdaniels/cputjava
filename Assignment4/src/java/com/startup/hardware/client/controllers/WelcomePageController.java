@@ -4,8 +4,8 @@
  */
 package com.startup.hardware.client.controllers;
 
-import com.startup.hardware.model.Item1;
-import com.startup.hardware.model.ItemSpecific;
+
+
 import com.startup.hardware.model.JoinClassItem;
 import com.startup.hardware.model.Welcome;
 import java.util.Date;
@@ -49,10 +49,23 @@ public class WelcomePageController
         return   "CreateSalesPerson";
     }
      
+    /**
+     *
+     * @param item1
+     * @param result
+     * @return
+     */
     @RequestMapping(value="/showCustomer",method=RequestMethod.POST)
-    public  String   createItem(@ModelAttribute("CreateItem") JoinClassItem item1,BindingResult  result)
+    public  String   createItem(Model  model,@ModelAttribute("CreateItem") JoinClassItem item1,BindingResult  result)
     {
          System.out.println("Quantity: "+item1.getQuantity()+"Description: "+item1.getDescription()+"Item ID: "+item1.getItem_ID()+"Size:"+item1.getSizes()+"Model: "+item1.getModel()+"Price:"+item1.getPrice());
+         JoinClassItem  joinC=new  JoinClassItem();
+         joinC.setQuantity(item1.getItem_ID());
+         joinC.setDescription(item1.getDescription());
+         joinC.setItem_ID(item1.getItem_ID());
+         joinC.setModel(item1.getModel());
+         joinC.setPrice(item1.getPrice());
+         model.addAttribute("msg1",joinC);
          return  "showCustomer";
     }
   
@@ -60,7 +73,7 @@ public class WelcomePageController
     public   ModelAndView  createItem()
     {
        
-        return  new  ModelAndView("CreateItem","command",new Item1());
+        return  new  ModelAndView("CreateItem","command",new JoinClassItem());
     }
    /*@RequestMapping({"/showCustomer"})
    public  String  showCust()

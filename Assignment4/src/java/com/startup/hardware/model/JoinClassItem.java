@@ -16,12 +16,11 @@ public class JoinClassItem implements  Serializable
 {
     private static final long serialVersionUID = 1L;
   
-    
+    private int quantity;
     private String Description;
     private int    Item_ID;
     private double sizes;
-    private String model;
-    private int quantity;
+    private String model;   
     private double  Price;
 
     public double getPrice() {

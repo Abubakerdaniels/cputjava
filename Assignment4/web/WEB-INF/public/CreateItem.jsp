@@ -19,7 +19,7 @@
             <td>  <form:input  path="quantity"/></td>
            </tr> 
            <tr>
-            <td> <form:label  path="Description">description</form:label></td>
+            <td> <form:label  path="Description">Description</form:label></td>
             <td> <form:input  path="Description"/>  </td>
            </tr>
            <tr>

@@ -11,7 +11,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body> 
+       <p>Quantity:   ${msg1.quantity}<p>
+      
+       <p>Item  ID :  ${msg1.sizes}</p>
+       <p>Sizes:     ${msg1.model}</p>
+       <p>Price:   ${msq1.Price}</p>
     </body>
 </html>
