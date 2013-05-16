@@ -1,6 +1,6 @@
 <%-- 
-    Document   : app-servlet
-    Created on : 13 May 2013, 1:20:17 PM
+    Document   : showCustomer
+    Created on : 15 May 2013, 11:01:56 PM
     Author     : Wallied
 --%>
 
@@ -9,13 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      
-        <meta http-equiv="Cache-Control" content="no-cache"/>
-        
-        <title>Hardware  Place</title>
+        <title>JSP Page</title>
     </head>
     <body>
-       
+        <h1>Hello World!</h1>
     </body>
-    
 </html>
