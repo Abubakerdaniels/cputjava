@@ -130,6 +130,18 @@ public class WelcomePageController
        
          return  "showCustomer";
    }
+   @RequestMapping({"/login"})
+   public  String login()
+   {
+       
+       return  "login";
+   }
    
+   @RequestMapping({"/accessDenied"})
+   public  String accessDenied()
+   {
+       
+       return  "accessDenied";
+   }
     
 }

@@ -44,35 +44,18 @@
 <servlet-name>CXFSERVLET </servlet-name>
 <url-pattern >/ws/*</url-pattern>
 </servlet-mapping>
-
+  
 
 <filter >
 <filter-name>springSecurityFilterChain </filter-name>
 <filter-class>org.springframework.web.filter.DelegatingFilterProxy </filter-class>
 </filter>
+
 <filter-mapping>
-<filter-name>springSecurityFilterChain </filter-name>
+<filter-name>springSecurityFilterChain</filter-name>
 <url-pattern>/*</url-pattern>
-</ filter-mapping>
-<servlet>
-<servlet-name>hashpayservlet</servlet-name>
-<servlet-class>
-com.vaadin.terminal.gwt.server.ApplicationServlet
-</servlet-class>
-<init-param>
-<param-name>application </param-name>
-<param-value>com.hashpay.clients.web.HashPayMain</param..value>
-</init-param>
-</servlet>
-<servlet-mapping>
-<servlet-name>hashpayservlet </servlet-name>
-<url-pattern>/app/*</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
-<servlet-name>hashpayservlet</servlet-name>
-<url-pattern>/VAADIN/*</url-pattern>
-</servlet-mapping>
-   -->
+</filter-mapping>-->
+
  <session-config>
         <session-timeout>
             30

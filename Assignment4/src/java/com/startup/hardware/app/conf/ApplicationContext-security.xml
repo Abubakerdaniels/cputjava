@@ -6,7 +6,7 @@ and open the template in the editor.
 
 
 <root>
-    <beans:beans xmlns="http://www.springframework.org/schema/security"
+    <beans:beans   xmlns="http://www.springframework.org/schema/security"
 xmlns:beans="http://www.springframework.org/schema/beans "
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance
 xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -17,14 +17,16 @@ http://www.springframework.org/schema/security/spring-30.xsd">
 <global-method-security secured-annotations="enabled">
     
 </global-method-security> 
- <!--     
-  <http auto-config="true">
-      <intercept-url  pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+   
+<http access-denied-page='/accessDenied.html' use-expressions="true">
+      <intercept-url  pattern="/login.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
       <intercept-url  pattern="/VAADIN/**"  filters="none"/>
       <intercept-url  pattern="/*.jsp" filters="none"/>
-      <intercept-url  pattern="/*.jsp" access="ROLE_CUSTOMER"/>
-      <form-login  login-page='/login.jsp'/>  
-  </http>                   
+      <intercept-url  pattern="/Welcome.html" access="hasRole('ROLE_ADMIN')"/>
+     <form-login login-page='/login.html' authentication-failure-url='/accessDenied.html' 
+                    default-target-url='/login.html'   />
+  
+                              
     <authentication-manager  alias="authenticationManager">
        <authentication-provider>
            <password-encoder  hash="md5"/>
@@ -32,7 +34,24 @@ http://www.springframework.org/schema/security/spring-30.xsd">
            users-by-username-query="Select  username,passwd,enabled  From  Users u where u.username=?"
            authorities-by-username-query="Select  u.username r.rolename FROM  Users u,Roles  r WHERE  u.id =r.role_id AND u.username=?"/>
        </authentication-provider> 
-    </authentication-manager>    
+    </authentication-manager>   
+    
+     <authentication-manager  >
+        <authentication>
+            <user-service>
+             <user  name="jimi"  password="d7e6351eaa13189a5a3641bab846c8e8c69ba39f"
+               authorities="ROLE_USER,ROLE_ADMIN" />  
+             <user name="bob"
+              password="4e7421b1b8765d8f9406d87e7cc6aa784c4ab97f"  authorities="ROLE_USER"/> 
+            </user-service>   
+        </authentication>  
+    </authentication-manager>  
+      
+      
+       <user-service>
+                <user name="cput" password="cput123" authorities="admin" />
+            </user-service>  
+            
         </beans:beans >
-        -->
+        
 </root>
