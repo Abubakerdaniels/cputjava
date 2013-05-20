@@ -43,6 +43,8 @@
         <property name="password" value="${database.password}"/>
         <property name="initialSize" value="5" />
         <property name="maxActive" value="10" />
+      <!--  <property name="maxIdle " value="3" />
+        <property name="maxWait" value="5000"/>-->
         <property name="defaultAutoCommit" value="true"/>
         <property name="defaultTransactionIsolation" value="2"/>
     </bean>

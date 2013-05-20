@@ -63,7 +63,7 @@ public class AppFactory
           itemSpecific.setModel(values.get("model"));
           itemSpecific.setName(values.get("name"));
           itemSpecific.setPrice(Double.parseDouble(values.get("Price")));
-          itemSpecific.setSizes(Integer.parseInt(values.get("sizes")));
+          itemSpecific.setSizes(Double.parseDouble(values.get("sizes")));
           return  itemSpecific;
           
       }

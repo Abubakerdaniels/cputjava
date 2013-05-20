@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="Cache-Control" content="no-cache"/>
-        <title>JSP Page</title>
+       
     </head>
     <body>
       
@@ -21,10 +21,11 @@
         
         <table>
             <tr>
-                <th colspan="3">
+                <th colspan="4">
                 <td><a  href="CreateCustomer.html" > Create  an customer<a></td>
                 <td><a href="CreateSalesPerson.html"> Create  an  Sales Person</a> <td></td> 
-                <td><a href="CreateItem.html">  Create  an  Item</a><td>     
+                <td><a href="CreateItem.html">Create  an  Item</a><td>  
+                <td><a href="ShowAllItem.html">Show  All Item<a><td> 
                 </th>
             </tr>
         </table>
