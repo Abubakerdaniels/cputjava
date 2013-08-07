@@ -14,6 +14,7 @@ public class AbstractFactory
     {
           if(type.equalsIgnoreCase("supervisor"))
           {
+               String name="cold";
               return   SupervisorFactory.getInstance();
           }
           else if(type.equalsIgnoreCase("customer"))
