@@ -65,6 +65,24 @@
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
+ <!-- a pooling based JMS provider -->
+  <bean id="jmsFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
+    <property name="connectionFactory">
+      <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL">
+          <value>tcp://localhost:61616</value>
+        </property>
+      </bean>
+    </property>
+  </bean>
+ 
+  <!-- Spring JMS Template -->
+  
+  <bean id="jmsFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+    <property name="brokerURL">
+      <value>tcp://localhost:61616</value>
+    </property>
+  </bean>
  
 </beans>
 
