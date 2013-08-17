@@ -66,23 +66,46 @@
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
  <!-- a pooling based JMS provider -->
-  <bean id="jmsFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
-    <property name="connectionFactory">
-      <bean class="org.apache.activemq.ActiveMQConnectionFactory">
-        <property name="brokerURL">
-          <value>tcp://localhost:61616</value>
-        </property>
-      </bean>
-    </property>
-  </bean>
  
+ 
+ <bean id="amqConnectionFactory"
+ 
+    class="org.apache.activemq.ActiveMQConnectionFactory"
+ 
+    p:brokerURL="tcp://localhost:61616" />
   <!-- Spring JMS Template -->
-  
-  <bean id="jmsFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-    <property name="brokerURL">
-      <value>tcp://localhost:61616</value>
-    </property>
-  </bean>
+  <bean id="cachedConnectionFactory"
+ 
+    class="org.springframework.jms.connection.CachingConnectionFactory"
+ 
+    p:targetConnectionFactory-ref="amqConnectionFactory"
+ 
+    p:sessionCacheSize="10" />
+ 
+ 
+ 
+<!-- A destination in ActiveMQ -->
+ 
+<bean id="destination"
+ 
+class="org.apache.activemq.command.ActiveMQQueue">
+ 
+<constructor-arg value="FOO.TEST" />
+ 
+</bean>
+ 
+ 
+ 
+<!-- A JmsTemplate instance that uses the cached connection and destination -->
+ 
+<bean id="producerTemplate"
+ 
+    class="org.springframework.jms.core.JmsTemplate"
+ 
+    p:connectionFactory-ref="cachedConnectionFactory"
+ 
+    p:defaultDestination-ref="destination"
+ />
  
 </beans>
 

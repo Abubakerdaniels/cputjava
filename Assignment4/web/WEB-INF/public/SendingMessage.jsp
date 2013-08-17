@@ -7,13 +7,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <title>Sending A Message</title>
+    <title> Sending A Message </title>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta http-equiv="Cache-Control" content="no-cache"/>
     </head>
 	<body>
-       <form:form  method="post"  action="showItem.html">
+       <form:form  method="post"  action="ShowMessage.html">
         <table>
            <tr>
              <td>  <form:label  path="quantity" class="text">Quantity</form:label></td>
@@ -21,7 +21,7 @@
            </tr> 
            <tr>
                <td  colspan ="2">
-                   <input  type="submit" value="CreateItem"/>
+                   <input  type="submit" value="SendingMessage"/>
                </td>
            </tr>
         </table>

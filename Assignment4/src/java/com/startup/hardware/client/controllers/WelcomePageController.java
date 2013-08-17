@@ -3,12 +3,10 @@
  * and open the template in the editor.
  */
 package com.startup.hardware.client.controllers;
-
-
-
 import com.startup.hardware.model.ItemSpecific;
 import com.startup.hardware.model.JoinClassItem;
 import com.startup.hardware.model.JoinClassSalesPerson;
+import com.startup.hardware.model.Message;
 import com.startup.hardware.model.SalesPerson;
 import com.startup.hardware.model.Welcome;
 import com.startup.hardware.service.Service.HardwareService;
@@ -43,10 +41,17 @@ public class WelcomePageController
     {
          Welcome message = new Welcome();
          message.setToday(new Date());
-         message.setWelcome("Welcome to the Home Page   of  Builder  WareHouse");
+         message.setWelcome("Welcome to the Home Page of  Builder  WareHouse");
          model.addAttribute("msg", message);
        // String message="Welcome to Hardware Store";
          return    "WelcomePage";
+    }
+    
+    @RequestMapping(value="/SendingMessage",method = RequestMethod.GET)
+    public String showAllitem(Model model)
+    {
+         
+         return   "SendingMessage";
     }
     @RequestMapping(value="/ShowAllItem", method = RequestMethod.GET)
     public  String  showAllItem(Model  model)
@@ -110,6 +115,14 @@ public class WelcomePageController
         return  "showSalesPerson";
     }
     
+    @RequestMapping(value="/ShowMessage",method=RequestMethod.POST)
+    public  String createMessage(Model  model,@ModelAttribute("SendingMessage") Message   brokerMessage,BindingResult  result)
+    {
+        Message message=new Message();
+        
+        return  "showSalesPerson";
+    }
+    
     @RequestMapping({"/CreateItem"})
     public   ModelAndView  createItem()
     {
@@ -117,13 +130,19 @@ public class WelcomePageController
         return  new  ModelAndView("CreateItem","command",new JoinClassItem());
     }
     
+    
+    @RequestMapping({"/SendingMessage"})
+    public ModelAndView  sendingMessage()
+    {
+        return  new ModelAndView("SendingMessage","command",new Message());
+        
+    }
+    
     @RequestMapping({"/CreateSalesPerson"})
     public   ModelAndView  createSalesPerson()
     {
         return  new    ModelAndView("CreateSalesPerson","command",new  JoinClassSalesPerson());
     }
-    
-    
    @RequestMapping({"/showCustomer"})
    public  String  showCust(Model  model)
    {
