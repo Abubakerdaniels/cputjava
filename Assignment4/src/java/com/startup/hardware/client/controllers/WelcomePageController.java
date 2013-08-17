@@ -130,7 +130,7 @@ public class WelcomePageController
         return  new  ModelAndView("CreateItem","command",new JoinClassItem());
     }
     
-    
+    //I hate kabaso
     @RequestMapping({"/SendingMessage"})
     public ModelAndView  sendingMessage()
     {
